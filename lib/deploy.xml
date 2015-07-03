@@ -37,7 +37,7 @@
 	</target>
 	   
 	<target name="makePackage" description="Deploys code local src dir to salesforce org specified in build.properties!" depends="clearPackage">
-	  <zip destfile="deploy.zip" update="true">
+	  <zip destfile="deploy.zip" update="false">
 		<fileset dir="src" includes="package.xml"/>
 		<fileset dir="src" includes="applications/*.app"/>
 		<fileset dir="src" includes="classes/*.cls,classes/*-meta.xml"/>
