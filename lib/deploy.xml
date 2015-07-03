@@ -29,7 +29,8 @@
 	<target name="deploy" depends="clearPackage,build"/>
 	
 	<target name="build" depends="makePackage">
-	  <sf:deploy username="${env.sfusername}" password="${env.sfpassword}" serverurl="${env.sfserver}" zipFile="deploy.zip" maxPoll="2000" pollWaitMillis="10000" rollbackOnError="true" singlePackage="true" allowMissingFiles="false" />
+	  <sf:deploy username="${env.sfusername}" password="${env.sfpassword}" serverurl="${env.sfserver}" deployroot="./src" maxPoll="2000" pollWaitMillis="10000" rollbackOnError="true" singlePackage="true" allowMissingFiles="false" />
+
 	</target>
 	
 	<target name="clearPackage">
