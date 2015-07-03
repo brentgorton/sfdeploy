@@ -286,7 +286,12 @@ update uL;]]>
     <param name="objdir"  value="quickActions" />
     <param name="objflt"  value="*" />
   </antcall>
-
+  <antcall target="generatePackageMembers">
+    <param name="objtyp"  value="Workflow" />
+    <param name="objext"  value="workflow" />
+    <param name="objdir"  value="workflows" />
+    <param name="objflt"  value="*" />
+  </antcall>
   
   <antcall target="GeneratePackageMembersStdObjCustomElements1"/>
 
