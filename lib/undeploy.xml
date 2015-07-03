@@ -27,13 +27,13 @@
 <project name="undeploy" xmlns:sf="antlib:com.salesforce">
 
 <target name="undeploy">
-
- <property name="stage.dir" value="/staging"/>
+<property name="stage.dir" value="stage"/>
+ <property name="stage" value="stage"/>
 
  <delete dir="${stage.dir}" /> 
  <mkdir dir="${stage.dir}" /> 
  <mkdir dir="${stage.dir}/deploy" /> 
- <echo>${stage.dir}</echo>
+ <echo>${stage}</echo>
  <antcall target="parkUsers"/>
  <antcall target="wipeEmailTemplates"/>
  <antcall target="generatePackageAll"/>
