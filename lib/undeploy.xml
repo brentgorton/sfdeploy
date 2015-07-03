@@ -57,7 +57,7 @@
 
  <antcall target="deleteDocuments"/>
  <antcall target="deleteEmailTemplates"/>
- <!--<delete dir="${stage.dir}" /> -->
+ <delete dir="${stage.dir}" failonerror="false" />
  
 </target>
 
