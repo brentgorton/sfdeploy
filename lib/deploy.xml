@@ -29,8 +29,7 @@
 	<target name="deploy" depends="clearPackage,build"/>
 	
 	<target name="build" depends="makePackage">
-	  <sf:deploy username="${env.sfusername}" password="${env.sfpassword}" serverurl="${env.sfserver}" deployroot="./src" maxPoll="2000" pollWaitMillis="10000" rollbackOnError="true" singlePackage="true" allowMissingFiles="false" />
-
+	  <sf:deploy username="${env.sfusername}" password="${env.sfpassword}" serverurl="${env.sfserver}" deployroot="./src" maxPoll="2000" pollWaitMillis="10000" rollbackOnError="true" allowMissingFiles="true" />
 	</target>
 	
 	<target name="clearPackage">
@@ -59,5 +58,14 @@
 		<fileset dir="src" includes="workflows/*.workflow"/>
 	  </zip>
 	</target>
-
+	<target name="makeResources" description="Deploys code local src dir to salesforce org specified in build.properties!" depends="clearPackage">
+	  <zip destfile="deploy.zip" update="false" basedir="${basedir}">
+		<fileset dir="src" includes="package.xml"/>
+		<fileset dir="src" includes="staticresources/*.resource,staticresources/*-meta.xml"/>
+		<fileset dir="src" includes="tabs/*.tab"/>
+		<fileset dir="src" includes="triggers/*.trigger,triggers/*-meta.xml"/>
+		<fileset dir="src" includes="weblinks/"/>
+		<fileset dir="src" includes="workflows/*.workflow"/>
+	  </zip>
+	</target>
 </project>
