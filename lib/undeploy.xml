@@ -38,9 +38,9 @@
  <antcall target="wipeEmailTemplates"/>
  <antcall target="generatePackageAll"/>
  <sf:retrieve username="${env.sfusername}" password="${env.sfpassword}" serverurl="${env.sfserver}" retrieveTarget="${stage.dir}" unpackaged="${stage.dir}/package.xml" maxPoll="2000" pollWaitMillis="5000"/>
-
+<!--
  <antcall target="removeCustomItemsFromPageLayouts"/>
- 
+ -->
  <antcall target="generatePrePurgeMembers"/>
  <antcall target="generatePackagePrePurge"/>
  <sf:deploy username="${env.sfusername}" password="${env.sfpassword}" serverurl="${env.sfserver}" deployRoot="${stage.dir}/deploy" singlePackage="true" runAllTests="false" rollbackOnError="false" allowMissingFiles="true" maxPoll="2000" pollWaitMillis="5000"/>
