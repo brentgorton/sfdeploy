@@ -28,36 +28,36 @@
 
 <target name="undeploy">
 <property name="stage.dir" value="stage"/>
- <property name="stage" value="stage"/>
+ <property name="stage" value="staging"/>
 
- <delete dir="${stage.dir}" /> 
- <mkdir dir="${stage.dir}" /> 
- <mkdir dir="${stage.dir}/deploy" /> 
+ <delete dir="${stage}" /> 
+ <mkdir dir="${stage}" /> 
+ <mkdir dir="${stage}/deploy" /> 
  <echo>${stage}</echo>
  <antcall target="parkUsers"/>
  <antcall target="wipeEmailTemplates"/>
  <antcall target="generatePackageAll"/>
- <sf:retrieve username="${env.sfusername}" password="${env.sfpassword}" serverurl="${env.sfserver}" retrieveTarget="${stage.dir}" unpackaged="${stage.dir}/package.xml" maxPoll="2000" pollWaitMillis="5000"/>
+ <sf:retrieve username="${env.sfusername}" password="${env.sfpassword}" serverurl="${env.sfserver}" retrieveTarget="${stage}" unpackaged="${stage}/package.xml" maxPoll="2000" pollWaitMillis="5000"/>
 <!--
  <antcall target="removeCustomItemsFromPageLayouts"/>
  -->
  <antcall target="generatePrePurgeMembers"/>
  <antcall target="generatePackagePrePurge"/>
- <sf:deploy username="${env.sfusername}" password="${env.sfpassword}" serverurl="${env.sfserver}" deployRoot="${stage.dir}/deploy" singlePackage="true" runAllTests="false" rollbackOnError="false" allowMissingFiles="true" maxPoll="2000" pollWaitMillis="5000"/>
+ <sf:deploy username="${env.sfusername}" password="${env.sfpassword}" serverurl="${env.sfserver}" deployRoot="${stage}/deploy" singlePackage="true" runAllTests="false" rollbackOnError="false" allowMissingFiles="true" maxPoll="2000" pollWaitMillis="5000"/>
   
- <delete dir="${stage.dir}/deploy" /> 
- <mkdir dir="${stage.dir}/deploy" /> 
+ <delete dir="${stage}/deploy" /> 
+ <mkdir dir="${stage}/deploy" /> 
  <antcall target="generateDestructiveChanges1"/>
- <sf:deploy purgeOnDelete="true" username="${env.sfusername}" password="${env.sfpassword}" serverurl="${env.sfserver}" deployRoot="${stage.dir}/deploy" singlePackage="true" runAllTests="false" rollbackOnError="false" allowMissingFiles="true" maxPoll="2000" pollWaitMillis="5000"/>
+ <sf:deploy purgeOnDelete="true" username="${env.sfusername}" password="${env.sfpassword}" serverurl="${env.sfserver}" deployRoot="${stage}/deploy" singlePackage="true" runAllTests="false" rollbackOnError="false" allowMissingFiles="true" maxPoll="2000" pollWaitMillis="5000"/>
 
- <delete dir="${stage.dir}/deploy" /> 
- <mkdir dir="${stage.dir}/deploy" /> 
+ <delete dir="${stage}/deploy" /> 
+ <mkdir dir="${stage}/deploy" /> 
  <antcall target="generateDestructiveChanges2"/>
- <sf:deploy purgeOnDelete="true" username="${env.sfusername}" password="${env.sfpassword}" serverurl="${env.sfserver}" deployRoot="${stage.dir}/deploy" singlePackage="true" runAllTests="false" rollbackOnError="false" allowMissingFiles="true" maxPoll="2000" pollWaitMillis="5000"/>
+ <sf:deploy purgeOnDelete="true" username="${env.sfusername}" password="${env.sfpassword}" serverurl="${env.sfserver}" deployRoot="${stage}/deploy" singlePackage="true" runAllTests="false" rollbackOnError="false" allowMissingFiles="true" maxPoll="2000" pollWaitMillis="5000"/>
 
  <antcall target="deleteDocuments"/>
  <antcall target="deleteEmailTemplates"/>
- <delete dir="${stage.dir}/deploy" /> 
+ <delete dir="${stage}/deploy" /> 
  
 </target>
 
@@ -109,14 +109,14 @@ update uL;]]>
 
 
 <target name="generateEmptyPackage">
-<echo file="${stage.dir}/deploy/package.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<echo file="${stage}/deploy/package.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
   <version>30.0</version>
 </Package>]]></echo>
 </target>
 
 <target name="generatePackagePrePurge">
-<echo file="${stage.dir}/deploy/package.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<echo file="${stage}/deploy/package.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
   <types>
     <members>*</members>
@@ -167,7 +167,7 @@ update uL;]]>
 
 
 <target name="generatePackageAll">
-<echo file="${stage.dir}/package.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<echo file="${stage}/package.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
   <types>
     <members>*</members>
@@ -258,12 +258,12 @@ update uL;]]>
 
 <target name="generateDestructiveChanges1">
 
-<echo file="${stage.dir}/deploy/package.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<echo file="${stage}/deploy/package.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
   <version>30.0</version>
 </Package>]]></echo>
 
-<echo file="${stage.dir}/deploy/destructiveChanges.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<echo file="${stage}/deploy/destructiveChanges.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 ]]></echo>
 
@@ -303,7 +303,7 @@ update uL;]]>
   
   <antcall target="GeneratePackageMembersStdObjCustomElements1"/>
 
-<echo file="${stage.dir}/deploy/destructiveChanges.xml" append="true"><![CDATA[  <version>30.0</version>
+<echo file="${stage}/deploy/destructiveChanges.xml" append="true"><![CDATA[  <version>30.0</version>
 </Package>]]></echo>
 
 </target>
@@ -311,12 +311,12 @@ update uL;]]>
 
 <target name="generateDestructiveChanges2">
 
-<echo file="${stage.dir}/deploy/package.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<echo file="${stage}/deploy/package.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
   <version>30.0</version>
 </Package>]]></echo>
 
-<echo file="${stage.dir}/deploy/destructiveChanges.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<echo file="${stage}/deploy/destructiveChanges.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 ]]></echo>
 
@@ -391,7 +391,7 @@ update uL;]]>
 
   <antcall target="GeneratePackageMembersStdObjCustomElements2"/>
 
-<echo file="${stage.dir}/deploy/destructiveChanges.xml" append="true"><![CDATA[  <version>30.0</version>
+<echo file="${stage}/deploy/destructiveChanges.xml" append="true"><![CDATA[  <version>30.0</version>
 </Package>]]></echo>
 
 </target>
@@ -413,7 +413,7 @@ update uL;]]>
    var objext = project.getProperty('objext');
    var objdir = project.getProperty('objdir');
    var objflt = project.getProperty('objflt');
-   var stage  = project.getProperty('stage.dir');
+   var stage  = project.getProperty('stage');
 
    var msg = '';
    msg+='<types>\n';
@@ -482,7 +482,7 @@ update uL;]]>
    var objext = project.getProperty('objext');
    var objdir = project.getProperty('objdir');
    var objflt = project.getProperty('objflt');
-   var stage  = project.getProperty('stage.dir');
+   var stage  = project.getProperty('stage');
 
    fs = project.createDataType("fileset");
    fs.setDir( new File("./" + stage + "/" + objdir  +"/") );
@@ -544,7 +544,7 @@ update uL;]]>
 	 	load("nashorn:mozilla_compat.js");
 	  }
 	  importPackage(java.io);
-      var stage  = project.getProperty('stage.dir');
+      var stage  = project.getProperty('stage');
       fs = project.createDataType("fileset");
       fs.setDir( new File("./" + stage + "/layouts/") );
       fs.setIncludes("*.layout");
@@ -657,7 +657,7 @@ update uL;]]>
 		 load("nashorn:mozilla_compat.js");
 	  }
 	  importPackage(java.io);
-      var stage  = project.getProperty('stage.dir');
+      var stage  = project.getProperty('stage');
       fs = project.createDataType("fileset");
       fs.setDir( new File("./" + stage + "/objects/") );
       fs.setIncludes("*.object");
@@ -747,7 +747,7 @@ update uL;]]>
 		 load("nashorn:mozilla_compat.js");
 	  }
 	  importPackage(java.io);
-      var stage  = project.getProperty('stage.dir');
+      var stage  = project.getProperty('stage');
       fs = project.createDataType("fileset");
       fs.setDir( new File("./" + stage + "/objects/") );
       fs.setIncludes("*.object");
@@ -873,7 +873,7 @@ update uL;]]>
 		 load("nashorn:mozilla_compat.js");
 	  }
 	  importPackage(java.io);
-      var stage  = project.getProperty('stage.dir');
+      var stage  = project.getProperty('stage');
       fs = project.createDataType("fileset");
       fs.setDir( new File("./" + stage + "/labels/") );
       fs.setIncludes("CustomLabels.labels");
