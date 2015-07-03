@@ -30,7 +30,7 @@
 
 <target name="RunTests" >
    <record name="RunTest.log" action="start"/>
-   <sf:compileAndTest  username="${sf.username}" password="${sf.password}" serverurl="${sf.server}" >
+   <sf:compileAndTest  username="${env.sfusername}" password="${env.sfpassword}" serverurl="${env.sfserver}" >
     <runTests Alltests="true"/>
    </sf:compileAndTest>
    <record name="RunTest.log" action="stop"/>  
@@ -46,9 +46,9 @@
 			}
 			importPackage(java.io);	
 			
-			var username = project.getProperty('sf.username');
-			var password = project.getProperty('sf.password');
-			var server = project.getProperty('sf.server');
+			var username = project.getProperty('env.sfusername');
+			var password = project.getProperty('env.sfpassword');
+			var server = project.getProperty('env.sfserver');
 			var tests = project.getProperty('tests');
 			
 			var classes = tests.split(",");

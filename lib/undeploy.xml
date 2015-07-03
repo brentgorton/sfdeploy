@@ -38,22 +38,22 @@
  <antcall target="deleteEmailTemplates"/>
 
  <antcall target="generatePackageAll"/>
- <sf:retrieve username="${sf.username}" password="${sf.password}" serverurl="${sf.server}" retrieveTarget="${stage.dir}" unpackaged="${stage.dir}/package.xml" maxPoll="2000" pollWaitMillis="5000"/>
+ <sf:retrieve username="${env.sfusername}" password="${env.sfpassword}" serverurl="${env.sfserver}" retrieveTarget="${stage.dir}" unpackaged="${stage.dir}/package.xml" maxPoll="2000" pollWaitMillis="5000"/>
 
  <antcall target="removeCustomItemsFromPageLayouts"/>
  <antcall target="generatePrePurgeMembers"/>
  <antcall target="generatePackagePrePurge"/>
- <sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.server}" deployRoot="${stage.dir}/deploy" singlePackage="true" runAllTests="false" rollbackOnError="false" allowMissingFiles="true" maxPoll="2000" pollWaitMillis="5000"/>
+ <sf:deploy username="${env.sfusername}" password="${env.sfpassword}" serverurl="${env.sfserver}" deployRoot="${stage.dir}/deploy" singlePackage="true" runAllTests="false" rollbackOnError="false" allowMissingFiles="true" maxPoll="2000" pollWaitMillis="5000"/>
 
  <delete dir="${stage.dir}/deploy" /> 
  <mkdir dir="${stage.dir}/deploy" /> 
  <antcall target="generateDestructiveChanges1"/>
- <sf:deploy purgeOnDelete="true" username="${sf.username}" password="${sf.password}" serverurl="${sf.server}" deployRoot="${stage.dir}/deploy" singlePackage="true" runAllTests="false" rollbackOnError="false" allowMissingFiles="true" maxPoll="2000" pollWaitMillis="5000"/>
+ <sf:deploy purgeOnDelete="true" username="${env.sfusername}" password="${env.sfpassword}" serverurl="${env.sfserver}" deployRoot="${stage.dir}/deploy" singlePackage="true" runAllTests="false" rollbackOnError="false" allowMissingFiles="true" maxPoll="2000" pollWaitMillis="5000"/>
 
  <delete dir="${stage.dir}/deploy" /> 
  <mkdir dir="${stage.dir}/deploy" /> 
  <antcall target="generateDestructiveChanges2"/>
- <sf:deploy purgeOnDelete="true" username="${sf.username}" password="${sf.password}" serverurl="${sf.server}" deployRoot="${stage.dir}/deploy" singlePackage="true" runAllTests="false" rollbackOnError="false" allowMissingFiles="true" maxPoll="2000" pollWaitMillis="5000"/>
+ <sf:deploy purgeOnDelete="true" username="${env.sfusername}" password="${env.sfpassword}" serverurl="${env.sfserver}" deployRoot="${stage.dir}/deploy" singlePackage="true" runAllTests="false" rollbackOnError="false" allowMissingFiles="true" maxPoll="2000" pollWaitMillis="5000"/>
 
  <antcall target="deleteDocuments"/>
 

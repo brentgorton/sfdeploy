@@ -44,7 +44,7 @@
 		classpath="${basedir}/build/lib/xmltask.jar"/>
 	
 	<target name="ExecAnon">
-		<executeApex username="${sf.username}" password="${sf.password}">${what}</executeApex>
+		<executeApex username="${env.sfusername}" password="${env.sfpassword}">${what}</executeApex>
 	</target>
 	
 	<!-- Provides access to the Salesforce Tooling REST  API ExecuteAnnoynmous resource -->
@@ -152,7 +152,7 @@
 
 	<target name="ExecAnonScript">
 	  <loadfile property="script" srcFile="${what}"/>	  
-	  <executeApex username="${sf.username}" password="${sf.password}">${script}</executeApex>
+	  <executeApex username="${env.sfusername}" password="${env.sfpassword}">${script}</executeApex>
 	</target>
 
 </project>
