@@ -201,7 +201,10 @@ update uL;]]>
     <members>*</members>
     <name>CustomLabels</name>
   </types>
-
+  <types>
+    <members>*</members>
+    <name>Layout</name>
+  </types>
   <types>
     <members>*</members>
     <members>Account</members>
@@ -224,6 +227,10 @@ update uL;]]>
   <types>
     <members>*</members>
     <name>ApexPage</name>
+  </types>
+  <types>
+    <members>*</members>
+    <name>Profile</name>
   </types>
   <types>
     <members>*</members>
@@ -341,6 +348,7 @@ update uL;]]>
     <param name="objdir"  value="components" />
     <param name="objflt"  value="*" />
   </antcall>
+  <!--
   <antcall target="generatePackageMembers">
     <param name="objtyp"  value="HomePageComponent" />
     <param name="objext"  value="homePageComponent" />
@@ -353,6 +361,7 @@ update uL;]]>
     <param name="objdir"  value="homePageLayouts" />
     <param name="objflt"  value="*" />
   </antcall>
+  -->
   <antcall target="GeneratePackageMembersLabels"/>
   <antcall target="generatePackageMembers">
     <param name="objtyp"  value="CustomObject" />
@@ -372,12 +381,14 @@ update uL;]]>
     <param name="objdir"  value="tabs" />
     <param name="objflt"  value="*" />
   </antcall>
+  <!--
   <antcall target="generatePackageMembers">
     <param name="objtyp"  value="Profile" />
     <param name="objext"  value="profile" />
     <param name="objdir"  value="profiles" />
     <param name="objflt"  value="${undeploy.profilePattern}*" /> 
   </antcall>
+  -->
   <antcall target="generatePackageMembers">
     <param name="objtyp"  value="CustomPageWebLink" />
     <param name="objext"  value="weblink" />
