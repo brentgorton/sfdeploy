@@ -35,6 +35,8 @@
  <mkdir dir="${stage.dir}/deploy" /> 
 
  <antcall target="parkUsers"/>
+ <antcall target="generateEmptyWorkflows" />
+
  <antcall target="deleteEmailTemplates"/>
 
  <antcall target="generatePackageAll"/>
@@ -121,7 +123,14 @@ update uL;]]>
   <version>30.0</version>
 </Package>]]></echo>
 </target>
-
+<target name="generateEmptyWorkflows">
+  <antcall target="generateEmptyMembers">
+    <param name="objtyp"  value="Workflow" />
+    <param name="objext"  value="workflow" />
+    <param name="objdir"  value="workflow" />
+    <param name="objflt"  value="*" />
+  </antcall>
+</target>
 <target name="generatePrePurgeMembers">
   <antcall target="generateEmptyMembers">
     <param name="objtyp"  value="ApexClass" />
