@@ -201,10 +201,7 @@ update uL;]]>
     <members>*</members>
     <name>CustomLabels</name>
   </types>
-  <types>
-    <members>*</members>
-    <name>Layout</name>
-  </types>
+
   <types>
     <members>*</members>
     <members>Account</members>
