@@ -81,7 +81,7 @@ update uL;]]>
 
 <target name="deleteEmailTemplates">
   <antcall target="ExecAnon"> 
-    <param name="what" value="delete [SELECT id FROM EmailTemplate WHERE TemplateType='visualforce'];"/> 
+    <param name="what" value="delete [SELECT id FROM EmailTemplate WHERE TemplateType='visualforce' OR (Name NOT LIKE 'Sales%' AND Name NOT LIKE 'Support%' AND Name NOT LIKE 'Marketing%')];"/> 
   </antcall>
 </target>
 
