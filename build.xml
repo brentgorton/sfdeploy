@@ -33,10 +33,10 @@
 	<property file="build.properties"/>
 	<property environment="env"/>
 	
-	<import file="${basedir}/build/build/build/build/build/lib/exec_anon.xml"/>
-	<import file="${basedir}/build/build/build/build/lib/deploy.xml"/>
-	<import file="${basedir}/build/build/build/lib/undeploy.xml"/>
-	<import file="${basedir}/build/build/lib/run_tests.xml"/>
+	<import file="${basedir}/build/lib/exec_anon.xml"/>
+	<import file="${basedir}/build/lib/deploy.xml"/>
+	<import file="${basedir}/build/lib/undeploy.xml"/>
+	<import file="${basedir}/build/lib/run_tests.xml"/>
 	<import file="${basedir}/build/lib/package_generator.xml"/>
 	
 	<target name="LoadCustomSettings">
