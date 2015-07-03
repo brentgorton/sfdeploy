@@ -33,7 +33,7 @@
  <delete dir="${stage.dir}" /> 
  <mkdir dir="${stage.dir}" /> 
  <mkdir dir="${stage.dir}/deploy" /> 
-
+ <echo>${stage.dir}</echo>
  <antcall target="parkUsers"/>
  <antcall target="wipeEmailTemplates"/>
  <antcall target="generatePackageAll"/>
@@ -57,7 +57,7 @@
 
  <antcall target="deleteDocuments"/>
  <antcall target="deleteEmailTemplates"/>
- <delete dir="${stage.dir}" failonerror="false" />
+ <delete dir="${stage.dir}/deploy" /> 
  
 </target>
 
