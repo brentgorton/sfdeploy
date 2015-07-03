@@ -28,16 +28,16 @@
 
 	<taskdef uri="antlib:com.salesforce"
 			 resource="com/salesforce/antlib.xml"
-			 classpath="${basedir}/lib/ant-salesforce.jar"/>
+			 classpath="${basedir}/build/lib/ant-salesforce.jar"/>
 	
 	<property file="build.properties"/>
 	<property environment="env"/>
 	
-	<import file="${basedir}/lib/exec_anon.xml"/>
-	<import file="${basedir}/lib/deploy.xml"/>
-	<import file="${basedir}/lib/undeploy.xml"/>
-	<import file="${basedir}/lib/run_tests.xml"/>
-	<import file="${basedir}/lib/package_generator.xml"/>
+	<import file="${basedir}/build/build/build/build/build/lib/exec_anon.xml"/>
+	<import file="${basedir}/build/build/build/build/lib/deploy.xml"/>
+	<import file="${basedir}/build/build/build/lib/undeploy.xml"/>
+	<import file="${basedir}/build/build/lib/run_tests.xml"/>
+	<import file="${basedir}/build/lib/package_generator.xml"/>
 	
 	<target name="LoadCustomSettings">
 	  <antcall target="ExecAnonScript">
