@@ -35,18 +35,19 @@
  <mkdir dir="${stage.dir}/deploy" /> 
 
  <antcall target="parkUsers"/>
+ 
  <antcall target="generateEmptyWorkflows" />
-
  <antcall target="deleteEmailTemplates"/>
 
  <antcall target="generatePackageAll"/>
  <sf:retrieve username="${env.sfusername}" password="${env.sfpassword}" serverurl="${env.sfserver}" retrieveTarget="${stage.dir}" unpackaged="${stage.dir}/package.xml" maxPoll="2000" pollWaitMillis="5000"/>
 
  <antcall target="removeCustomItemsFromPageLayouts"/>
+ 
  <antcall target="generatePrePurgeMembers"/>
  <antcall target="generatePackagePrePurge"/>
  <sf:deploy username="${env.sfusername}" password="${env.sfpassword}" serverurl="${env.sfserver}" deployRoot="${stage.dir}/deploy" singlePackage="true" runAllTests="false" rollbackOnError="false" allowMissingFiles="true" maxPoll="2000" pollWaitMillis="5000"/>
-
+  
  <delete dir="${stage.dir}/deploy" /> 
  <mkdir dir="${stage.dir}/deploy" /> 
  <antcall target="generateDestructiveChanges1"/>
@@ -130,6 +131,10 @@ update uL;]]>
     <param name="objdir"  value="workflow" />
     <param name="objflt"  value="*" />
   </antcall>
+ <sf:deploy username="${env.sfusername}" password="${env.sfpassword}" serverurl="${env.sfserver}" deployRoot="${stage.dir}/deploy" singlePackage="true" runAllTests="false" rollbackOnError="false" allowMissingFiles="true" maxPoll="2000" pollWaitMillis="5000"/>
+  
+ <delete dir="${stage.dir}/deploy" /> 
+ <mkdir dir="${stage.dir}/deploy" /> 
 </target>
 <target name="generatePrePurgeMembers">
   <antcall target="generateEmptyMembers">
