@@ -28,7 +28,7 @@
 
 <target name="undeploy">
 
- <property name="stage.dir" value="stage"/>
+ <property name="stage.dir" value="/staging"/>
 
  <delete dir="${stage.dir}" /> 
  <mkdir dir="${stage.dir}" /> 
