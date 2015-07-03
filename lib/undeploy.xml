@@ -140,6 +140,12 @@ update uL;]]>
     <param name="objdir"  value="pages" />
     <param name="objflt"  value="*" />
   </antcall>
+  <antcall target="generateEmptyMembers">
+    <param name="objtyp"  value="EmailTemplate" />
+    <param name="objext"  value="email" />
+    <param name="objdir"  value="email/unfiled$public" />
+    <param name="objflt"  value="*" />
+  </antcall>
 </target>
 
 
@@ -275,6 +281,7 @@ update uL;]]>
     <param name="objdir"  value="quickActions" />
     <param name="objflt"  value="*" />
   </antcall>
+
   
   <antcall target="GeneratePackageMembersStdObjCustomElements1"/>
 
