@@ -118,6 +118,11 @@ update uL;]]>
     <members>*</members>
     <name>ApexPage</name>
   </types>
+  <types>
+        <members>unfiled$public</members>
+        <members>unfiled$public/Action_Contact_Update_Email</members>
+        <name>EmailTemplate</name>
+    </types>
   <version>30.0</version>
 </Package>]]></echo>
 </target>
